@@ -1,12 +1,12 @@
 Coinorama
 =========
 
-What is Coinorama ?
+What is Coinorama?
 -------------------
 Coinorama is a monitoring framework for Bitcoin markets, network and blockchain.
 It's been active since May 2013 as Coinorama.net and released under GNU Affero GPL v3 in 2016.
 
-The framework includes : data collection tools, database for timeseries and a web frontend.
+The framework includes: data collection tools, database for timeseries and a web frontend.
 
 
 License
@@ -23,13 +23,13 @@ The web frontend distribution comes with : JQuery and Flot (a Javascript plottin
 Installation
 ------------
 
-Dependencies are the following :
+Dependencies are the following:
  * lighttpd
  * glib-2.0
  * python 2.7
  * bitcoind (for network/blocks data)
 
-After unpacking the distribution tarball :
+After unpacking the distribution tarball:
 ```sh
 $ ./configure # add '-o' to enable compiler's optimizations
 $ make
@@ -41,16 +41,16 @@ The installation will be performed in the current directory, copying all necessa
 Running
 -------
 
-The framework can be managed using a single script : *bin/coinorama*
+The framework can be managed using a single script: *bin/coinorama*
 
 Have a look at this script (or call it without any argument) to get its syntax.
 
 Most settings are located in [conf/coinorama.conf](conf/coinorama.conf).
 Check out this file and fill in the markets you would like to monitor.
-Check-out the content of [src/markets/watcher/](src/markets/watcher/) to find out which markets have a watcher.
+Check out the content of [src/markets/watcher/](src/markets/watcher/) to find out which markets have a watcher.
 
 ### Markets
-To start collecting market data (for example bitstamp USD market) :
+To start collecting market data (e.g. Bitstamp USD market):
 ```sh
 $ ./bin/coinorama watcher bitstampUSD start  # start collecting data
 $ ./bin/coinorama watcher bitstampUSD log    # inspect log
@@ -58,12 +58,12 @@ $ ./bin/coinorama watcher bitstampUSD status # check watcher status
 $ ./bin/coinorama watcher bitstampUSD stop   # stop collecting data
 ```
 
-You may also use the *markets* keyword to process all markets declared in the configuration file : 
+You may also use the *markets* keyword to process all markets declared in the configuration file: 
 ```sh
 $ ./bin/coinorama watcher markets start     # start collecting data for all markets
 ```
 
-Once you have collected a few minutes of data, you may start the markets database service :
+Once you have collected a few minutes of data, you may start the markets database service:
 ```sh
 $ ./bin/coinorama coinrefd start
 ```
@@ -72,11 +72,11 @@ $ ./bin/coinorama coinrefd start
 Before starting the collection of blockchain data, update the *bin/watcher-blockchain.py* file with the RPC password configured for your Bitcoind.
 Please note that you will also need to enable Bitcoind txindex to have accurate TX data.
 
-You may download an initial data file from : http://nbenoit.tuxfamily.org/projects/coinorama/blockchain.csv.gz
+You may download an initial data file from: http://nbenoit.tuxfamily.org/projects/coinorama/blockchain.csv.gz
 
 Uncompress it and rename/move it as *data/blockchain/data.csv*
 
-To start collecting blockchain data :
+To start collecting blockchain data:
 ```sh
 $ ./bin/coinorama watcher blockchain start
 ```
@@ -84,7 +84,7 @@ $ ./bin/coinorama watcher blockchain start
 When the initial dataset is empty, it may require many hours of processing before actually reaching the current block.
 In addition, the hashrate estimation may be broken given that timestamp of past blocks is not properly set.
 
-Once you're ready, you may start the network/blockchain database service :
+Once you're ready, you may start the network/blockchain database service:
 ```sh
 $ ./bin/coinorama chainrefd start
 ```
